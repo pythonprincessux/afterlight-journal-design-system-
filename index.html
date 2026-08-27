@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rich-editorial">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afterlight Journal — Design-System Specimen</title>
+<meta name="description" content="Afterlight Journal design-system specimen: tokens, typography, components, and control foundations for an independent culture and design publication.">
+
+<!-- Type: Libre Baskerville (display) + Inter (body). Source/license documented in the footer. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <p class="eyebrow">Design-system specimen — not a finished homepage</p>
+    <h1 class="display" style="margin:0;">Afterlight Journal</h1>
+    <p class="brand-line">Stories worth looking at twice.</p>
+
+    <div class="theme-toggle">
+      <button type="button" id="theme-toggle-btn" class="btn btn-secondary" aria-pressed="false">
+        Switch to Midnight theme
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO ================================================================== -->
+  <section class="specimen-section" aria-labelledby="intro-heading">
+    <h2 id="intro-heading" class="h2">About this specimen</h2>
+    <p class="section-intro measure-wide">
+      Afterlight Journal is an independent publication covering art, culture, design, place,
+      and contemporary creative perspectives. This page is documentation for the
+      publication's visual foundation — the tokens and reusable patterns later modules
+      will build on for figures, forms, tables, and navigation. It is intentionally
+      restrained: a specimen sheet, not a marketing homepage.
+    </p>
+  </section>
+
+  <!-- S1 — FOUNDATION + RESET ================================================ -->
+  <section class="specimen-section" aria-labelledby="s1-heading">
+    <div class="section-heading">
+      <span class="section-id">S1</span>
+      <h2 id="s1-heading" class="h2" style="margin:0;">Foundation + Reset</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      A small, selective reset — not a full browser strip. Each rule below exists for a
+      specific reason; nothing is removed just because it's a common default.
+    </p>
+
+    <pre><code>*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}</code></pre>
+
+    <div class="usage-note">
+      <strong>Included, and why:</strong> <code>box-sizing: border-box</code> makes padding and
+      border predictable in every width calculation. <code>body { margin: 0 }</code> removes the
+      one universally unwanted default. <code>img, svg</code> sizing prevents media from
+      overflowing narrow viewports. <code>font: inherit</code> on form controls stops inputs and
+      buttons from silently falling back to the browser's UI font instead of Inter.
+      <br><br>
+      <strong>Intentionally not touched:</strong> focus outlines (enhanced via
+      <code>:focus-visible</code> rather than removed — see S4), list markers, heading and
+      paragraph margins, and native control affordances (checkboxes, radios, selects keep
+      their recognizable browser-drawn appearance). These carry real semantic and usability
+      value that a full reset would throw away for no system-level reason.
+    </div>
+  </section>
+
+  <!-- S2 — TOKEN INVENTORY ==================================================== -->
+  <section class="specimen-section" aria-labelledby="s2-heading">
+    <div class="section-heading">
+      <span class="section-id">S2</span>
+      <h2 id="s2-heading" class="h2" style="margin:0;">Token Inventory</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      Every value used elsewhere on this page traces back to a token below. Primitives
+      describe what a value <em>is</em>; semantic tokens describe what it <em>does</em>.
+      Components only ever reference semantic tokens.
+    </p>
+
+    <div class="subsection">
+      <h3>Color — primitives (Rich Editorial)</h3>
+      <div class="card-grid">
+        <div class="swatch"><div class="swatch-color" style="background:#f7f3ea;"></div>
+          <div class="swatch-meta"><span class="token-name">--ivory-100</span><span>#F7F3EA — Page background</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#fffdf8;"></div>
+          <div class="swatch-meta"><span class="token-name">--cream-50</span><span>#FFFDF8 — Surface</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#29221f;"></div>
+          <div class="swatch-meta"><span class="token-name">--espresso-900</span><span>#29221F — Primary text</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#716762;"></div>
+          <div class="swatch-meta"><span class="token-name">--taupe-600</span><span>#716762 — Muted text</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#d8cec0;"></div>
+          <div class="swatch-meta"><span class="token-name">--sand-300</span><span>#D8CEC0 — Border</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#7a263a;"></div>
+          <div class="swatch-meta" style="color:#fffdf8;background:#7a263a;"><span class="token-name">--burgundy-600</span><span>#7A263A — Action</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#5d1d2c;"></div>
+          <div class="swatch-meta" style="color:#fffdf8;background:#5d1d2c;"><span class="token-name">--burgundy-700</span><span>#5D1D2C — Action hover</span></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#9a6a16;"></div>
+          <div class="swatch-meta" style="color:#fffdf8;background:#9a6a16;"><span class="token-name">--gold-600</span><span>#9A6A16 — Focus</span></div></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Color — semantic tokens</h3>
+      <pre><code>--color-background: var(--ivory-100);
+--color-surface:    var(--cream-50);
+--color-text:       var(--espresso-900);
+--color-text-muted: var(--taupe-600);
+--color-border:     var(--sand-300);
+--color-action:       var(--burgundy-600);
+--color-action-hover: var(--burgundy-700);
+--color-focus:         var(--gold-600);</code></pre>
+      <p class="text-muted" style="font-size:var(--text-sm);">
+        Components (cards, buttons, links, controls) reference only these eight names —
+        never a hex value or a primitive directly.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Spacing scale</h3>
+      <div class="spacing-demo">
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-xs · 0.25rem</span><div class="spacing-bar" style="width:0.25rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-sm · 0.5rem</span><div class="spacing-bar" style="width:0.5rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-md · 1rem</span><div class="spacing-bar" style="width:1rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-lg · 1.5rem</span><div class="spacing-bar" style="width:1.5rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-xl · 2rem</span><div class="spacing-bar" style="width:2rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-2xl · 3rem</span><div class="spacing-bar" style="width:3rem;"></div></div>
+        <div class="spacing-row"><span class="mono" style="width:9rem;">--space-3xl · 4rem</span><div class="spacing-bar" style="width:4rem;"></div></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Measure</h3>
+      <p style="max-width:var(--measure-text); border:1px dashed var(--color-border); padding:var(--space-sm);">
+        <span class="metadata">65ch — --measure-text</span><br>
+        Standard readable body-copy measure, used for article paragraphs and lead text.
+      </p>
+      <p style="max-width:var(--measure-wide); border:1px dashed var(--color-border); padding:var(--space-sm); margin-top:var(--space-sm);">
+        <span class="metadata">80ch — --measure-wide</span><br>
+        Wider measure reserved for documentation and specimen copy like this section.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Radius</h3>
+      <div class="card-grid">
+        <div class="radius-demo sm">sm — 0.25rem<br>Controls</div>
+        <div class="radius-demo md">md — 0.5rem<br>Buttons, notices</div>
+        <div class="radius-demo lg">lg — 0.75rem<br>Cards, large surfaces</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Elevation</h3>
+      <div class="card-grid">
+        <div class="elevation-demo low">low<br>Routine content</div>
+        <div class="elevation-demo mid">mid<br>Featured content</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Typography tokens</h3>
+      <table class="states-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">--text-xs</td><td>0.75rem</td><td>Metadata</td></tr>
+          <tr><td class="mono">--text-sm</td><td>0.875rem</td><td>Supporting text</td></tr>
+          <tr><td class="mono">--text-base</td><td>1rem</td><td>Body</td></tr>
+          <tr><td class="mono">--text-lg</td><td>1.125rem</td><td>Lead text</td></tr>
+          <tr><td class="mono">--text-xl</td><td>1.5rem</td><td>Smaller headings</td></tr>
+          <tr><td class="mono">--text-2xl</td><td>clamp(1.75rem, 4vw, 2.5rem)</td><td>Section headings</td></tr>
+          <tr><td class="mono">--text-3xl</td><td>clamp(2.5rem, 7vw, 4.5rem)</td><td>Main display</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="usage-note">
+      Colors, spacing, radius, and elevation are documented above as rendered specimens
+      rather than a plain table, so a reviewer can see the token and its effect together.
+    </div>
+  </section>
+
+  <!-- S3 — TYPOGRAPHY ========================================================= -->
+  <section class="specimen-section" aria-labelledby="s3-heading">
+    <div class="section-heading">
+      <span class="section-id">S3</span>
+      <h2 id="s3-heading" class="h2" style="margin:0;">Typography</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      Two families carry the whole system: a serif display face for identity and
+      emphasis, and a sans body face for everything read at length.
+    </p>
+
+    <div class="subsection">
+      <h3>Family specimens</h3>
+      <p style="font-family:var(--font-display); font-size:var(--text-xl);">Libre Baskerville — Display role</p>
+      <p style="font-family:var(--font-body); font-size:var(--text-xl);">Inter — Body / UI role</p>
+      <p class="mono" style="font-size:var(--text-lg);">SFMono-Regular stack — Code / technical role</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Hierarchy</h3>
+      <p class="display" style="font-family:var(--font-display); margin:0 0 var(--space-sm);">Afterlight Journal</p>
+      <h1 style="margin:0 0 var(--space-sm);">Culture changes when we look closer.</h1>
+      <h2 style="margin:0 0 var(--space-sm);">Recent perspectives</h2>
+      <h3 style="margin:0;">Design beyond the object</h3>
+    </div>
+
+    <div class="subsection">
+      <h3>Content specimen</h3>
+      <p class="lead">
+        A lead paragraph sits just above body copy in weight and size — enough to
+        orient a reader before the piece settles into its regular rhythm.
+      </p>
+      <p>
+        A standard paragraph is set in Inter at the base size, constrained to the
+        65-character measure so long-form reading stays comfortable on wide screens.
+        It can carry an <a href="#s4-heading">inline link</a> or a reference to a token
+        like <code>--color-action</code> without breaking rhythm.
+      </p>
+      <p class="metadata">Filed under Design · 6 min read</p>
+      <ul>
+        <li>Lists inherit body typography and default marker styling</li>
+        <li>Nothing about list semantics is stripped by the reset</li>
+        <li>Spacing between items uses normal browser defaults</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3>Responsive scale</h3>
+      <p class="text-muted" style="font-size:var(--text-sm);">
+        Resize the browser to see <code>--text-2xl</code> and <code>--text-3xl</code> move
+        between their <code>clamp()</code> floor and ceiling. Below is <code>--text-2xl</code>
+        live:
+      </p>
+      <p style="font-family:var(--font-display); font-size:var(--text-2xl); font-weight:var(--weight-bold); margin:0;">
+        Stories worth looking at twice.
+      </p>
+    </div>
+
+    <div class="usage-note">
+      <strong>Source &amp; license:</strong> Libre Baskerville and Inter are both served from
+      Google Fonts and licensed under the SIL Open Font License 1.1, which permits use,
+      modification, and redistribution, including in a project like this one. Full license
+      text: <a href="https://openfontlicense.org/" target="_blank" rel="noopener">openfontlicense.org</a>.
+      <br><br>
+      <strong>Fallback evidence:</strong> if Libre Baskerville and Inter fail to load, this
+      page falls back to <code>Georgia/Times New Roman/serif</code> and
+      <code>Arial/Helvetica/sans-serif</code> respectively — both are documented in the CSS
+      custom properties above. To verify: open DevTools → Network → block the Google Fonts
+      request (or set Network to Offline before a hard reload) and confirm the hierarchy
+      above stays legible and correctly weighted in the fallback stack. Record the observed
+      result in the test record, not here.
+    </div>
+  </section>
+
+  <!-- S4 — ACTIONS + STATES =================================================== -->
+  <section class="specimen-section" aria-labelledby="s4-heading">
+    <div class="section-heading">
+      <span class="section-id">S4</span>
+      <h2 id="s4-heading" class="h2" style="margin:0;">Actions + States</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      Every interactive element in this system shares one focus language and a
+      consistent primary/secondary hierarchy.
+    </p>
+
+    <div class="subsection">
+      <h3>Text links</h3>
+      <p>
+        A default link looks <a href="#">like this</a>, underlined so its purpose is
+        obvious without relying on color alone. Try tabbing to it, hovering it, and
+        clicking it to see each state.
+      </p>
+      <table class="states-table">
+        <thead><tr><th>State</th><th>Treatment</th></tr></thead>
+        <tbody>
+          <tr><td>Default</td><td>Burgundy text, underline</td></tr>
+          <tr><td>Hover</td><td>Deep burgundy, thicker underline</td></tr>
+          <tr><td>Focus</td><td>Gold <code>:focus-visible</code> outline</td></tr>
+          <tr><td>Active</td><td>Deep burgundy (pressed feedback)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3>Primary button</h3>
+      <div class="demo-row">
+        <button type="button" class="btn btn-primary">Read the latest issue</button>
+        <button type="button" class="btn btn-primary" disabled>Read the latest issue</button>
+        <span class="text-muted" style="font-size:var(--text-sm);">← default, disabled</span>
+      </div>
+      <p class="text-muted" style="font-size:var(--text-sm);">
+        Burgundy fill, deep burgundy on hover, gold outline on keyboard focus, a 1px
+        press offset on active, and reduced opacity with no hover response when disabled.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Secondary button</h3>
+      <div class="demo-row">
+        <button type="button" class="btn btn-secondary">Browse the archive</button>
+        <button type="button" class="btn btn-secondary" disabled>Browse the archive</button>
+        <span class="text-muted" style="font-size:var(--text-sm);">← default, disabled</span>
+      </div>
+      <p class="text-muted" style="font-size:var(--text-sm);">
+        Primary is the main next step on a page; secondary is a supporting action that
+        should never compete with it for attention.
+      </p>
+    </div>
+
+    <div class="usage-note">
+      Active/pressed feedback (<code>translateY(1px)</code>) is documented in the plan as
+      an option to test, not a locked decision — keep it only if it reads as an
+      improvement once tested on a real pointer and touch device.
+    </div>
+  </section>
+
+  <!-- S5 — SURFACES + CONTENT PATTERNS ======================================== -->
+  <section class="specimen-section" aria-labelledby="s5-heading">
+    <div class="section-heading">
+      <span class="section-id">S5</span>
+      <h2 id="s5-heading" class="h2" style="margin:0;">Surfaces + Content Patterns</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      Two card patterns, one callout, and a media placeholder — the reusable content
+      shapes future issues will be built from.
+    </p>
+
+    <div class="subsection">
+      <h3>Standard article card</h3>
+      <div class="card-grid">
+        <article class="article-card">
+          <p class="metadata">Design · 4 min read</p>
+          <h3>Design beyond the object</h3>
+          <p>What we mean when we say a chair, a building, or a typeface is "well made."</p>
+          <a href="#">Read the piece</a>
+        </article>
+        <article class="article-card">
+          <p class="metadata">Place · 6 min read</p>
+          <h3>Mapping the in-between</h3>
+          <p>A photo essay on the corridors, courtyards, and thresholds cities forget to name.</p>
+          <a href="#">Read the piece</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Featured card</h3>
+      <div class="featured-card" style="max-width:32rem;">
+        <div class="media-placeholder">16:9 media placeholder</div>
+        <p class="metadata">Culture · Cover story</p>
+        <h3 style="margin:0;">Recent perspectives</h3>
+        <p style="margin:0; color:var(--color-text-muted);">
+          Six writers on how a single city block can hold three decades of change.
+        </p>
+        <button type="button" class="btn btn-primary" style="align-self:flex-start;">Read the latest issue</button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Editorial callout</h3>
+      <div class="callout" style="max-width:40rem;">
+        <h3>Editorial note</h3>
+        <p>Afterlight publishes independent perspectives across art, culture, design, and place.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Spacing + elevation relationships</h3>
+      <pre><code>space-md  → standard internal gap
+space-lg  → component padding (card, callout)
+space-2xl → section separation</code></pre>
+      <div class="card-grid">
+        <div class="elevation-demo low">Low elevation<br>Standard article card</div>
+        <div class="elevation-demo mid">Mid elevation<br>Featured card</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 — CONTROL FOUNDATIONS ================================================ -->
+  <section class="specimen-section" aria-labelledby="s6-heading">
+    <div class="section-heading">
+      <span class="section-id">S6</span>
+      <h2 id="s6-heading" class="h2" style="margin:0;">Control Foundations</h2>
+    </div>
+    <p class="section-intro measure-wide">
+      Basic labeled controls that inherit the type system and share the same
+      keyboard-focus treatment as links and buttons. Full form design is reserved
+      for Module 3 — this is only the foundation.
+    </p>
+
+    <form novalidate>
+      <div class="field">
+        <label for="display-name">Display name</label>
+        <input type="text" id="display-name" name="display-name" placeholder="e.g. Priya Nair">
+      </div>
+
+      <div class="field">
+        <label for="reading-interest">Reading interest</label>
+        <select id="reading-interest" name="reading-interest">
+          <option value="art">Art</option>
+          <option value="culture">Culture</option>
+          <option value="design">Design</option>
+          <option value="place">Place</option>
+        </select>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="updates" name="updates">
+        <label for="updates">Send occasional journal updates</label>
+      </div>
+
+      <fieldset>
+        <legend>Preferred edition</legend>
+        <div class="radio-row">
+          <input type="radio" id="edition-digital" name="edition" value="digital" checked>
+          <label for="edition-digital">Digital</label>
+        </div>
+        <div class="radio-row">
+          <input type="radio" id="edition-print" name="edition" value="print">
+          <label for="edition-print">Print</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary">Save preferences</button>
+    </form>
+
+    <div class="usage-note">
+      Labels are always real <code>&lt;label&gt;</code> elements tied to their control with
+      <code>for</code>/<code>id</code> — placeholder text (as on Display name) is a hint, never
+      a replacement for the label. Native checkbox, radio, and select rendering is kept
+      rather than rebuilt, so browser and assistive-tech affordances stay intact. The
+      primary button is reused directly from S4 rather than a new S6-only button style.
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <h2 class="h2">Documentation</h2>
+
+    <div class="subsection">
+      <h3>Reset philosophy</h3>
+      <p class="font-test-note measure-wide">
+        Normalize only where there is a specific, named reason (box model, stray body
+        margin, media overflow, form-control font inheritance). Leave every other
+        browser default — focus rings, list markers, heading/paragraph spacing, native
+        control rendering — in place, because they carry real usability value a blanket
+        reset would erase for no system-level benefit.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Token hierarchy</h3>
+      <p class="font-test-note measure-wide">
+        Primitive tokens (e.g. <code>--burgundy-600</code>) describe a raw value.
+        Semantic tokens (e.g. <code>--color-action</code>) describe its role. Components
+        reference only semantic tokens, never a hex value or a primitive name directly.
+        This is why the Midnight theme below only needs to remap eight semantic
+        variables — not touch a single component rule.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Theme</h3>
+      <p class="font-test-note measure-wide">
+        Toggle the button at the top of the page to preview Midnight Editorial. It
+        changes background, surface, text, muted text, border, action, action-hover,
+        and focus — nothing else — because <code>[data-theme="midnight"]</code> only
+        overrides semantic custom properties, never a component selector.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>Font source &amp; license</h3>
+      <p class="font-test-note measure-wide">
+        Libre Baskerville and Inter, served via Google Fonts, SIL Open Font License 1.1.
+        Fallback stacks (<code>Georgia/Times New Roman/serif</code> and
+        <code>Arial/Helvetica/sans-serif</code>) are documented in S3 and verified under
+        Required Testing.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <h3>AI disclosure</h3>
+      <p class="font-test-note measure-wide">
+        AI-assisted with disclosure. AI helped compare project-concept and theme
+        directions, suggest palette and token names, compare token-architecture and
+        spacing/radius/elevation approaches, and explain the primitive → semantic
+        distinction. All final token values, component decisions, testing, verification,
+        and code in this file were selected, written, and confirmed by the author. See
+        the separate AI disclosure and verification record for the finalized log.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle-btn');
+    var STORAGE_KEY = 'afterlight-theme';
+
+    function applyTheme(theme) {
+      if (theme === 'midnight') {
+        root.setAttribute('data-theme', 'midnight');
+        btn.textContent = 'Switch to Rich Editorial theme';
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        root.setAttribute('data-theme', 'rich-editorial');
+        btn.textContent = 'Switch to Midnight theme';
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* ignore */ }
+    if (saved) applyTheme(saved);
+
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'midnight' ? 'rich-editorial' : 'midnight';
+      applyTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) { /* ignore */ }
+    });
+  })();
+</script>
+
+</body>
+</html>
