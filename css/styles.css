@@ -678,3 +678,13 @@ main {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+@media (max-width: 30rem) {
+  .states-table {
+    table-layout: fixed;
+  }
+
+  .states-table th,
+  .states-table td {
+    overflow-wrap: anywhere;
+  }
+}
