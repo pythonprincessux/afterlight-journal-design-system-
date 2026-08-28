@@ -6,8 +6,18 @@ foundation — tokens, type, and reusable components — not a finished marketin
 homepage. Later modules build on this: figures, forms, tables, SVG, navigation,
 shapes, and effects.
 
-**Live site:** 
+## Submission
 
+Repository URL:
+https://github.com/pythonprincessux/afterlight-journal-design-system-
+
+Published specimen URL:
+https://pythonprincessux.github.io/afterlight-journal-design-system-/
+
+Required documentation:
+- `test-record.md` - test conditions, expected results, observed results, and revisions
+- `ai-disclosure.md` - AI assistance and verification record
+- `code-defense.md` - reset strategy, token hierarchy, scoped theme override, and evidence-based revision
 
 ## What's here
 

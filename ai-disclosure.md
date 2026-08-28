@@ -26,6 +26,9 @@ AI assistance contributed suggestions or explanations related to:
 - interpreting HTML and CSS validator results
 - organzing lines of index and styles.css to render webpage correctly
 - organizing the final testing and verification record
+- structuring a polished code defense after taking my own notes and answering questions
+- polishing submission.md
+- organizing raw notes and unstructured notes for code defense summary
 
 ## Authority
 
